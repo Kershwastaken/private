@@ -81,6 +81,12 @@ movement:AddSlider({
         game:GetService("Workspace").Gravity = v
     end
 })
+private:AddButton({
+	Name = "first private button",
+	Callback = function()
+      		print("private op")
+  	end    
+})
 combat:AddButton({
     Name = "Aimbot",
     Callback = function()
