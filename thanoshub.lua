@@ -36,12 +36,17 @@ local bedwars = Window:MakeTab({
 	Name = "bedwars",
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
+	
 })
 local gui = Window:MakeTab({
     Name = "gui",
     Icon = "rbxassetid://4483345998",
     PremiumOnly = false,
 })
+local private = Window:MakeTab({
+	Name = "private",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
 
 
 movement:AddSlider({
