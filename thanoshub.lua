@@ -1,261 +1,119 @@
---thanks to robloxscripts.com for providing a lot of the coding i need
+--thanks to robloxscripts.com for having a lot of the coding i need
 
-repeat wait() until game:IsLoaded() == true
-if setclipboard then setclipboard("https://discord.gg/VjzccAHzR4a")  end
-local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/shlexware/Orion/main/source"))()
-local Window = Library:MakeWindow({Name = "Thanos hub", HidePremium = false, SaveConfig = true, ConfigFolder = "ThanosDaGamerHub"})
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
 
-Library:MakeNotification({
-    Name = "Welcome!",
-    Content = "And by the way, you should join my discord!\nInvite: VjzccAHzR4(copied to clipboard)",
-    Image = "rbxassetid://4483345998",
-    Time = 10,
-})
+local Window = Library.CreateLib("thanos hub v2.1", "Ocean")
 
-local movement = Window:MakeTab({
-    Name = "Movmeent",
-    Icon = "rbxassetid://4483345998",
-    PremiumOnly = false,
-})
-local combat = Window:MakeTab({
-    Name = "Combat",
-    Icon = "rbxassetid://4483345998",
-    PremiumOnly = false,
-})
-local render = Window:MakeTab({
-    Name = "Render",
-    Icon = "rbxassetid://4483345998",
-    PremiumOnly = false,
-})
-local credits = Window:MakeTab({
-    Name = "credits",
-    Icon = "rbxassetid://4483345998",
-    PremiumOnly = false,
-})
-local bedwars = Window:MakeTab({
-	Name = "bedwars",
-	Icon = "rbxassetid://4483345998",
-	PremiumOnly = false
+
+local movement = Window:NewTab("movement")
+
+local combat = Window:NewTab("combat")
+
+local render = Window:NewTab("render")
+
+local credits = Window:NewTab("credits")
+
+local private = Window:NewTab("private")
+
+local movementsection = movement:NewSection("movement")
+
+local combatsection = combat:NewSection("combat")
+
+local rendersection = render:NewSection("render")
+
+local creditssection = credits:NewSection("credits")
+
+local unsuppored = private:NewSection("if you see nothing here, its bc unsupported game")
+
+
+
+ if game.PlaceId == 286090429 then	
+
+local arsenalSection = private:NewSection("arsenal")
+
+arsenalSection:NewButton("autofarm", "autofarms with ai", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Thanosdagamer/arsenal/main/ai.lua"))()
+end)
+   
+
+end
+
+
+if game.PlaceId == 292439477 then
+	local phantomforces = private:NewSection("phantom forces")
 	
-})
-local gui = Window:MakeTab({
-    Name = "gui",
-    Icon = "rbxassetid://4483345998",
-    PremiumOnly = false,
-})
-local private = Window:MakeTab({
-	Name = "private",
-	Icon = "rbxassetid://4483345998",
-	PremiumOnly = false
-})
+phantomforces:NewButton("firerate op", "makes ur firerate absolutely insane", function()
+    
 
-movement:AddSlider({
-    Name = "WalkSpeed",
-    Min = 16,
-    Max = 300,
-    Default = 5,
-    Color = Color3.fromRGB(255, 255, 255),
-    Increment = 1,
-    ValueName = "Speed",
-    Callback = function(v)
-        game:GetService("Players").LocalPlayer.Character.Humanoid.WalkSpeed = v
-    end
-})
-movement:AddToggle({
-     Name = "UseCFRame",
-     Default = false,
-     Callback = function(v)
-          shared.USE_CF_INSTEAD = v
-          loadstring(game:HttpGet("https://raw.githubusercontent.com/Thanosdagamer/cframe/main/code"))()
-     end
-})
-movement:AddSlider({
-    Name = "Gravity",
-    Min = 0,
-    Max = 197,
-    Default = 5,
-    Color = Color3.fromRGB(255, 255, 255),
-    Increment = 1,
-    ValueName = "GravityToSet",
-    Callback = function(v)
-        game:GetService("Workspace").Gravity = v
-    end
-})
-private:AddButton({
-    Name = "speed 100",
-    Callback = function()
-              game.Workspace.thanosdagamerkeed.Humanoid.WalkSpeed = 50
-      end
-})
-combat:AddButton({
-    Name = "Aimbot",
-    Callback = function()
-        _G.AimbotInput = "RightClick"
+getgenv().Set = 999999999999;
+loadstring(game:HttpGet("https://ehub.fun/uploads/firerate13.lua"))()
+
+
+end)
+end
+movementsection:NewSlider("speed", "changes speed", 100, 16, function(s) -- 500 (MaxValue) | 0 (MinValue)
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = s
+end)
+
+
+
+movementsection:NewSlider("gravity", "change ur gravity",500, 0, function(s) -- 500 (MaxValue) | 0 (MinValue)
+    game:GetService("Workspace").Gravity = s
+end)
+
+combatsection:NewButton("aimbot", "rightclick to lock screen on people who arent on team", function()
+    G.AimbotInput = "RightClick"
         _G.AimbotEasing = 0.000000000000001
         _G.TeamCheck = true
         loadstring(game:HttpGet("https://raw.githubusercontent.com/zeroisswag/universal-aimbot/main/script.lua"))()
-    end
-})
-render:AddButton({
-    Name = "ESP",
-    Callback = function()
-	_G.FriendColor = Color3.fromRGB(0, 0, 255)
+end)
+if game.PlaceId == 29243947 then
+
+	phantomforcees:NewButton("hitbox extender", "extends hitboxes a lot", function()
+		Size = 8 -- Setting higher than 8 or so will screw with the server hit detection and prevent your guns from damaging people. 8 is still easy to "rage" with. I recommend 2-5 if you want to look legit.
+Transparency = 0.5 -- Leave it at 0.5 if you want the heads to be visible. Set to 1 to make them invisible.
+game:GetService("RunService").Stepped:Connect(function()
+for i,v in next, workspace.Players:GetDescendants() do
+if v:FindFirstChild("Head") and not v:FindFirstChildWhichIsA("MeshPart") then
+sethiddenproperty(v.Head, "Massless", true)
+v.Head.CanCollide = false
+v.Head.Transparency = Transparency
+if v.Head.Size ~= Vector3.new(Size, Size, Size) and v.Head.Mesh.Scale ~= Vector3.new(Size, Size, Size) then
+v.Head.Size = Vector3.new(Size, Size, Size)
+v.Head.Mesh.Scale = Vector3.new(Size, Size, Size)
+end
+if v.Head.Parent.Parent.Name == "Bright blue" then
+v.Head.BrickColor = BrickColor.new("Bright blue")
+end
+if v.Head.Parent.Parent.Name == "Bright orange" then
+v.Head.BrickColor = BrickColor.new("Bright orange")
+end
+end
+end
+end)
+
+while wait() do
+for i,v in next, workspace.Ignore.DeadBody:GetChildren() do
+v:Destroy()
+end
+end
+	end)
+
+end
+
+combatsection:NewButton("silent aim", "auto aim no screen lock", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Thanosdagamer/silentaimscript/main/silentaim.lua"))()
+end)
+
+
+
+rendersection:NewButton("esp", "easily see players", function()
+    _G.FriendColor = Color3.fromRGB(0, 0, 255)
 	_G.EnemyColor = Color3.fromRGB(255, 0, 0)
 	_G.UseTeamColor = false
 	loadstring(game:HttpGet("https://raw.githubusercontent.com/zeroisswag/universal-esp/main/esp.lua"))()
-    end
-})
-credits:AddLabel("a person i will not say cuz he asked")
-credits:AddLabel("also me")
-
-bedwars:AddButton({
-	Name = "tpwalk (bypasses)",
-	Callback = function()
-      		local humanoid = game:GetService("Players").LocalPlayer.Character.Humanoid
-humanoid.Running:Connect(function(speed)
-    humanoid.WalkSpeed = 0
-    game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame + game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame.lookVector 
-    wait(.25)
-    humanoid.WalkSpeed = 54
-end)
- 
-	end
-})
-
-combat:AddButton({
-    Name = "silent aim",
-    Callback = function()
-		local Players = game:GetService("Players")
-local LocalPlayer = Players.LocalPlayer
-local mouse = LocalPlayer:GetMouse()
-local Camera = workspace.CurrentCamera
-local Debris = game:GetService("Debris")
-local UserInputService = game:GetService("UserInputService")
-local target = false
-local RunService = game:GetService("RunService")
-
-
-getfenv().lock = "Head" -- Head or Hitbox or Random
-
-fov = 250;
-local fovCircle = true;
-local st = tonumber(tick());
-warn("Loading script...")
-
-if fovCircle then
-	function createcircle()
-	    local a=Drawing.new('Circle');a.Transparency=1;a.Thickness=1.5;a.Visible=true;a.Color=Color3.fromRGB(0,255,149);a.Filled=false;a.Radius=fov;
-	    return a;
-	end;  
-	local fovc = createcircle();
-	spawn(function()
-	    RunService:BindToRenderStep("FovCircle",1,function()
-	        fovc.Position = Vector2.new(mouse.X,mouse.Y)
-	    end);
-	end);
-end;
-
-function isFfa()
-	local am = #Players:GetChildren();
-	local amm = 0;
-	for i , v in pairs(Players:GetChildren()) do
-		if v.Team == LocalPlayer.Team then
-			amm = amm + 1;
-		end;
-	end;
-	return am == amm;
-end;
-function getnearest()
-	local nearestmagnitude = math.huge
-	local nearestenemy = nil
-	local vector = nil
-	local ffa = isFfa();
-	for i,v in next, Players:GetChildren() do
-		if ffa == false and v.Team ~= LocalPlayer.Team or ffa == true then
-			if v.Character and  v.Character:FindFirstChild("HumanoidRootPart") and v.Character:FindFirstChild("Humanoid") and v.Character.Humanoid.Health > 0 then
-				local vector, onScreen = Camera:WorldToScreenPoint(v.Character["HumanoidRootPart"].Position)
-				if onScreen then
-					local ray = Ray.new(
-					Camera.CFrame.p,
-					(v.Character["Head"].Position-Camera.CFrame.p).unit*500
-					)
-					local ignore = {
-					LocalPlayer.Character,
-					}
-					local hit,position,normal=workspace:FindPartOnRayWithIgnoreList(ray,ignore)
-					if hit and hit:FindFirstAncestorOfClass("Model") and Players:FindFirstChild(hit:FindFirstAncestorOfClass("Model").Name)then
-						local magnitude = (Vector2.new(mouse.X, mouse.Y) - Vector2.new(vector.X, vector.Y)).magnitude
-						if magnitude < nearestmagnitude and magnitude <= fov then
-							nearestenemy = v
-							nearestmagnitude = magnitude
-						end
-					end
-				end
-			end
-		end
-	end
-	return nearestenemy
-end
-
-
-local meta = getrawmetatable(game)
-setreadonly(meta, false)
-local oldNamecall = meta.__namecall
-meta.__namecall = newcclosure(function(...)
-    
-	local method = getnamecallmethod()
-	local args = {...}
-	if string.find(method,'Ray') then
-		if target then
-		    if args[1].Name ~= "Workspace" then
-   		        print(args[1])
-   		    end;
-			args[2] = Ray.new(workspace.CurrentCamera.CFrame.Position, (target.Position + Vector3.new(0,(workspace.CurrentCamera.CFrame.Position-target.Position).Magnitude/500,0) - workspace.CurrentCamera.CFrame.Position).unit * 5000)
-		end
-	end
-	return oldNamecall(unpack(args))
 end)
 
-warn("Script loaded!\nTime taken: "..math.abs(tonumber(tick())-st))
-RunService:BindToRenderStep("SilentAim",1,function()
-	if UserInputService:IsMouseButtonPressed(0) and Players.LocalPlayer.Character and Players.LocalPlayer.Character:FindFirstChild("Humanoid") and Players.LocalPlayer.Character.Humanoid.Health > 0 then
-		local enemy = getnearest()
-		if enemy and enemy.Character and enemy.Character:FindFirstChild("Humanoid") and enemy.Character.Humanoid.Health > 0 then                
-			local vector, onScreen = Camera:WorldToScreenPoint(enemy.Character["Head"].Position)
-			local head = (Vector2.new(mouse.X, mouse.Y) - Vector2.new(vector.X, vector.Y)).magnitude
-			local vector, onScreen = Camera:WorldToScreenPoint(enemy.Character["HumanoidRootPart"].Position)
-			local hitbox = (Vector2.new(mouse.X, mouse.Y) - Vector2.new(vector.X, vector.Y)).magnitude
-			if head <= hitbox then
-				magnitude = head
-			else
-				magnitude = hitbox;
-			end;
-			if getfenv().lock == "Head" then
-				target = workspace[enemy.Name]["Head"]
-			else
-				if getfenv().lock == "Random" then
-					if magnitude == hitbox then
-						target = workspace[enemy.Name]["HumanoidRootPart"];
-					else
-						target = workspace[enemy.Name]["Head"]
-					end;
-				else
-					target = workspace[enemy.Name]["HumanoidRootPart"];
-				end;
+creditssection:NewLabel("me (thanosdagamer#6469)")
 
-			end;
-		else
-			target = nil
-		end
-	end
-end)
-
-end
-})
-gui:AddButton({
-	Name = "owl hub",
-	Callback = function()
-		loadstring(game:HttpGet("https://raw.githubusercontent.com/CriShoux/OwlHub/master/OwlHub.txt"))();
-	end
-})
-Library:Init()
+creditssection:NewLabel("someone i wont mention cuz they asked")
